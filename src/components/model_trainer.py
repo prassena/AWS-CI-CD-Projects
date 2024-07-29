@@ -117,3 +117,9 @@ class ModelTrainer:
             
         except Exception as e:
             raise CustomException(e,sys)
+        
+if __name__ == "__main__":
+    print("gd")
+    dd = ModelTrainerConfig()
+    print(dd.trained_model_file_path)
+    ModelTrainer()
