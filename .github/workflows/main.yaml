@@ -37,13 +37,22 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y jq unzip
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Configure AWS CLI
+        run: |
+          aws configure set aws_access_key_id ASIAYS2NVE5BUMDATYMX
+          aws configure set aws_secret_access_key hX1RssrIbdvUJYdKOqnQq1ZKx3dVMfpy8PVtYHJ6
+          aws configure set aws_session_token IQoJb3JpZ2luX2VjEFoaCWV1LXdlc3QtMSJGMEQCIEhOqkLjNZO7wXDd5cf0ydnRneG4wRByE7jBLVEcVog3AiAAkouoqn8MCngLMxyzj/BDMjlV+CLme5/GB4piK0DWpCqUAwhCEAAaDDU5MDE4Mzk5OTI5OSIMiumV6KOFX4wTipqHKvECwhY2FXwrsfx+Z2eSWAdZxnqdZ6vccf+yDY90m1PV3QJqP01cLo22YTYLljYnFFMJ3DdVj9UvDW4NCfbXJAZjUYDoKdY83UDfYdMuNUfx+Bv+jA88xZgDGYRapwnRD5KsKx4pwTgRSX01u2PjKTG0H/7awm6JTOGtdWbUdxMIzvbzvgGRTCex0pwm8m9Erf/cajJrbx4bm2huJwrYGLCLXxjkHEKjhWmwvx9nj73O8xpIlMBY3/dWVili+x4PEAS7RKC7sJ4Yrji0DgtQVxu0sjR8q0xMFYDOcclm41y5JGU0jSuU/ONEyUSCZHE3njYC+cFqCa0U/gHNEz7NmRvtoRkuGfDgU1KaPPCSiSEIUXvju0ajsM6pGuvVJpTnmggfpEaeiQqyRfOz8EJA9rGKQuV74AyhBz91bp/HyYX1GnHLgEJ+XHO2Kjd5Jk5FjQXKXOUFXs2lNQh8K3E/sY0Q4DvA7ufbQdq5Xfk8SY1y0Q18MJTforUGOqcB6gJDkZxCOFyaVVtHB3tTaMxIFBJXwCMtm8uzjoNtkgh1LjTkbEw7dqTXYUeqRU1cCsmLSBmdh9LGh7OVQZo17EUVADwPZjZNlcY+0cURoLl3PjyNJI6R4L1Ovd/zZhC3SEl/LpnxC1rQEl6xOSIeSmn4UYsM0ToZsdbBtnsanMYLtmHTHpSmUXoHQTDuWU1NdzZ3o5vmwxZQUxwRsveKDVR6ej5OZS4=
+          aws configure set region eu-west-1
+
+
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+        # with:
+          # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          # aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          # aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -71,13 +80,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: ${{ secrets.AWS_REGION }}
+
+
+      - name: Configure AWS CLI
+        run: |
+          aws configure set aws_access_key_id ASIAYS2NVE5BUMDATYMX
+          aws configure set aws_secret_access_key hX1RssrIbdvUJYdKOqnQq1ZKx3dVMfpy8PVtYHJ6
+          aws configure set aws_session_token IQoJb3JpZ2luX2VjEFoaCWV1LXdlc3QtMSJGMEQCIEhOqkLjNZO7wXDd5cf0ydnRneG4wRByE7jBLVEcVog3AiAAkouoqn8MCngLMxyzj/BDMjlV+CLme5/GB4piK0DWpCqUAwhCEAAaDDU5MDE4Mzk5OTI5OSIMiumV6KOFX4wTipqHKvECwhY2FXwrsfx+Z2eSWAdZxnqdZ6vccf+yDY90m1PV3QJqP01cLo22YTYLljYnFFMJ3DdVj9UvDW4NCfbXJAZjUYDoKdY83UDfYdMuNUfx+Bv+jA88xZgDGYRapwnRD5KsKx4pwTgRSX01u2PjKTG0H/7awm6JTOGtdWbUdxMIzvbzvgGRTCex0pwm8m9Erf/cajJrbx4bm2huJwrYGLCLXxjkHEKjhWmwvx9nj73O8xpIlMBY3/dWVili+x4PEAS7RKC7sJ4Yrji0DgtQVxu0sjR8q0xMFYDOcclm41y5JGU0jSuU/ONEyUSCZHE3njYC+cFqCa0U/gHNEz7NmRvtoRkuGfDgU1KaPPCSiSEIUXvju0ajsM6pGuvVJpTnmggfpEaeiQqyRfOz8EJA9rGKQuV74AyhBz91bp/HyYX1GnHLgEJ+XHO2Kjd5Jk5FjQXKXOUFXs2lNQh8K3E/sY0Q4DvA7ufbQdq5Xfk8SY1y0Q18MJTforUGOqcB6gJDkZxCOFyaVVtHB3tTaMxIFBJXwCMtm8uzjoNtkgh1LjTkbEw7dqTXYUeqRU1cCsmLSBmdh9LGh7OVQZo17EUVADwPZjZNlcY+0cURoLl3PjyNJI6R4L1Ovd/zZhC3SEl/LpnxC1rQEl6xOSIeSmn4UYsM0ToZsdbBtnsanMYLtmHTHpSmUXoHQTDuWU1NdzZ3o5vmwxZQUxwRsveKDVR6ej5OZS4=
+          aws configure set region eu-west-1
+
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+      #     aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Login to Amazon ECR
         id: login-ecr
